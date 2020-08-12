@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div style={{ display: "grid", placeItems: "center" }}>
-      <h1>Tic Toc</h1>
+      <h1>Tic Tac Toe</h1>
       <div>
         {show ? (
           <div className="sizeBox">

@@ -10,7 +10,7 @@ function Game({ show, board, SetXO, win, size }) {
   if (!show) return null;
   return (
     <React.Fragment>
-      <div>
+      <div className="resultContainer">
         {win ? (
           <p style={{ textAlign: "center", color: "red" }}>
             <strong>{win === "Draw" ? `DRAW` : `${win} - WON`}</strong>

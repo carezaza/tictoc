@@ -93,9 +93,16 @@ p {
   padding: 5px;
 }
 
-.sizeBox{
-  border:1px solid #ccc;
+.sizeBox {
+  border: 1px solid #ccc;
   border-radius: 5px;
   padding: 15px;
   font-size: 20px;
+}
+
+.resultContainer {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin: 15px 0;
 }

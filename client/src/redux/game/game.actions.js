@@ -1,5 +1,5 @@
 export const SetXO = (XO) => async (dispatch) => {
-  await dispatch({ type: "SetXO", payload: XO });
-  await dispatch({ type: "StepUp" });
-  await dispatch({ type: "CheckWin" });
+  dispatch({ type: "SetXO", payload: XO });
+  dispatch({ type: "StepUp" });
+  dispatch({ type: "CheckWin" });
 };
