@@ -1,6 +1,6 @@
 export function SetTest(board) {
   const test = [];
-  let columns = Math.sqrt(board.length);
+  let size = Math.sqrt(board.length);
 
   //   horizontal
   let horizontal = [];
@@ -18,13 +18,13 @@ export function SetTest(board) {
   let countV = 0;
   for (let i = 0; i < board.length; i++) {
     vertical.push(winVertical);
-    if (vertical.length === columns) {
+    if (vertical.length === size) {
       test.push(vertical);
       vertical = [];
       countV += 1;
       winVertical = countV;
     } else {
-      winVertical += columns;
+      winVertical += size;
     }
   }
 
@@ -33,24 +33,24 @@ export function SetTest(board) {
   let winDiagonalLeft = 0;
   for (let i = 0; i < board.length; i++) {
     diagonalLeft.push(winDiagonalLeft);
-    if (diagonalLeft.length === columns) {
+    if (diagonalLeft.length === size) {
       test.push(diagonalLeft);
       break;
     } else {
-      winDiagonalLeft += columns + 1;
+      winDiagonalLeft += size + 1;
     }
   }
 
   //   Diagonal Right
   let diagonalRight = [];
-  let winDiagonalRight = columns - 1;
+  let winDiagonalRight = size - 1;
   for (let i = 0; i < board.length; i++) {
     diagonalRight.push(winDiagonalRight);
-    if (diagonalRight.length === columns) {
+    if (diagonalRight.length === size) {
       test.push(diagonalRight);
       break;
     } else {
-      winDiagonalRight += columns - 1;
+      winDiagonalRight += size - 1;
     }
   }
   return test;
@@ -58,26 +58,25 @@ export function SetTest(board) {
 
 export function checkWinner(board, step, test) {
   let winner = null;
-  let columns = Math.sqrt(board.length);
+  let winLength = Math.sqrt(board.length);
 
   for (let i = 0; i < test.length; i++) {
-    const arr = [...test[i]];
+    const arr = [];
+    for (let j = 0; j < test[i].length; j++) {
+      arr.push(board[test[i][j]]);
+    }
+    const X = arr.filter((a) => a === "X");
+    const O = arr.filter((a) => a === "O");
+    if (X.length === winLength) {
+      winner = "X";
+      break;
+    }
+    if (O.length === winLength) {
+      winner = "O";
+      break;
+    }
     if (winner) {
       break;
-    } else {
-      for (let j = 0; j < test[i].length; j++) {
-        arr.push(board[test[i][j]]);
-        const X = arr.filter((a) => a === "X");
-        const O = arr.filter((a) => a === "O");
-        if (X.length === columns) {
-          winner = "X";
-          break;
-        }
-        if (O.length === columns) {
-          winner = "O";
-          break;
-        }
-      }
     }
   }
 
